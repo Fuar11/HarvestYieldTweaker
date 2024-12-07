@@ -39,7 +39,6 @@ namespace HarvestYieldTweaker.Patches
                 else if (__instance.m_BreakDownNameLabel.mText.Equals("Pallets")) value = __instance.m_BreakDown.name.Contains("PalletPileB") ? CustomSettings.settings.stackedPallets : CustomSettings.settings.piledPallets;
                 else value = __instance.m_BreakDown.m_YieldObjectUnits[0];
 
-                    Main.Logger.Log($"Yield is {value}", ComplexLogger.FlaggedLoggingLevel.Debug);
                 __instance.m_BreakDown.m_YieldObjectUnits[0] = value;
                 __instance.RefreshYield();
             }
