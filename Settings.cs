@@ -43,20 +43,35 @@ namespace HarvestYieldTweaker
 
         [Section("Other")]
 
-        [Name("Crate")]
-        [Description("The amount of reclaimed wood you get from chopping crates.")]
-        [Slider(5, 15)]
-        public int crate = 5;
+        [Name("Mini Crate")]
+        [Description("The amount of reclaimed wood you get from chopping mini crates.")]
+        [Slider(2, 3)]
+        public int crateMini = 2;
 
-        [Name("Planks")]
-        [Description("The amount of reclaimed wood you get from chopping planks.")]
-        [Slider(3, 15)]
-        public int planks = 3;
-        
-        [Name("Pallets")]
-        [Description("The amount of reclaimed wood you get from chopping pallets.")]
+        [Name("Small Crate")]
+        [Description("The amount of reclaimed wood you get from chopping small crates.")]
+        [Slider(2, 6)]
+        public int crateSmall = 2;
+
+        [Name("Medium Crate")]
+        [Description("The amount of reclaimed wood you get from chopping medium crates.")]
+        [Slider(4, 10)]
+        public int crateMedium = 4;
+
+        [Name("Large Crate")]
+        [Description("The amount of reclaimed wood you get from chopping large crates.")]
+        [Slider(6, 12)]
+        public int crateLarge = 6;
+    
+        [Name("Stacked Pallets")]
+        [Description("The amount of reclaimed wood you get from chopping stacked pallets.")]
+        [Slider(16, 32)]
+        public int stackedPallets = 16;
+
+        [Name("Piled Pallets")]
+        [Description("The amount of reclaimed wood you get from chopping pilled pallets.")]
         [Slider(12, 32)]
-        public int pallets = 12;
+        public int piledPallets = 12;
 
     }
 

@@ -17,28 +17,29 @@ namespace HarvestYieldTweaker.Patches
         public class ChangeYield
         {
 
-            static int defaultValue = 0;
-
             public static void Postfix(Panel_BreakDown __instance, ref bool enable)
             {
 
                 if (!enable) return;
 
-                int value = 0;
-                defaultValue = defaultValue == 0 ? __instance.m_BreakDown.m_YieldObjectUnits[0] : defaultValue;
+                int value = 1;
 
-                if (__instance.m_BreakDownNameLabel.mText.Equals("Cedar Limb"))
+                if (__instance.m_BreakDownNameLabel.mText.Equals("Cedar Limb")) value = __instance.m_BreakDown.name.Contains("LimbA_Big") ? CustomSettings.settings.largeCedar : CustomSettings.settings.smallCedar;
+                else if (__instance.m_BreakDownNameLabel.mText.Equals("Fir Limb")) value = __instance.m_BreakDown.name.Contains("LimbB_Big") ? CustomSettings.settings.largeFir : CustomSettings.settings.smallFir;
+                else if (__instance.m_BreakDownNameLabel.mText.Equals("Branch")) value = CustomSettings.settings.branchYield;
+                else if (__instance.m_BreakDownNameLabel.mText.Equals("Scrub Brush")) value = CustomSettings.settings.brushYield;
+                else if (__instance.m_BreakDownNameLabel.mText.Equals("Crate"))
                 {
-                    Main.Logger.Log("Cedar found", ComplexLogger.FlaggedLoggingLevel.Debug);
-                    value = defaultValue >= 5 ? CustomSettings.settings.largeCedar : CustomSettings.settings.smallCedar;
+                    if (__instance.m_BreakDown.name.Contains("CratesB")) value = CustomSettings.settings.crateMini;
+                    else if (__instance.m_BreakDown.name.Contains("BoxCrateC")) value = CustomSettings.settings.crateSmall;
+                    else if (__instance.m_BreakDown.name.Contains("BoxCrateB")) value = CustomSettings.settings.crateMedium;
+                    else if (__instance.m_BreakDown.name.Contains("BoxCrateA")) value = CustomSettings.settings.crateLarge;
+                    else value = __instance.m_BreakDown.m_YieldObjectUnits[0];
                 }
-                else if(__instance.m_BreakDownNameLabel.mText.Equals("Fir Limb"))
-                {
-                    Main.Logger.Log("Fir found", ComplexLogger.FlaggedLoggingLevel.Debug);
-                    value = defaultValue >= 5 ? CustomSettings.settings.largeFir : CustomSettings.settings.smallFir;
-                }
+                else if (__instance.m_BreakDownNameLabel.mText.Equals("Pallets")) value = __instance.m_BreakDown.name.Contains("PalletPileB") ? CustomSettings.settings.stackedPallets : CustomSettings.settings.piledPallets;
+                else value = __instance.m_BreakDown.m_YieldObjectUnits[0];
 
-                Main.Logger.Log($"Yield is {value}", ComplexLogger.FlaggedLoggingLevel.Debug);
+                    Main.Logger.Log($"Yield is {value}", ComplexLogger.FlaggedLoggingLevel.Debug);
                 __instance.m_BreakDown.m_YieldObjectUnits[0] = value;
                 __instance.RefreshYield();
             }
