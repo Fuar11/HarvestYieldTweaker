@@ -37,6 +37,17 @@ namespace HarvestYieldTweaker.Patches
                     else value = __instance.m_BreakDown.m_YieldObjectUnits[0];
                 }
                 else if (__instance.m_BreakDownNameLabel.mText.Equals("Pallets")) value = __instance.m_BreakDown.name.Contains("PalletPileB") ? CustomSettings.settings.stackedPallets : CustomSettings.settings.piledPallets;
+                else if (__instance.m_BreakDownNameLabel.mText.Equals("Metal Lamp")) value = __instance.m_BreakDown.name.Contains("LampB2") ? CustomSettings.settings.smallLamp : CustomSettings.settings.tallLamp;
+                else if (__instance.m_BreakDownNameLabel.mText.Equals("Metal Shelf"))
+                {
+                    if (__instance.m_BreakDown.name.Contains("MetalShelfD")) value = CustomSettings.settings.smallMetalShelf;
+                    else if (__instance.m_BreakDown.name.Contains("MetalLockerA")) value = CustomSettings.settings.lockerMetalShelf;
+                    else if (__instance.m_BreakDown.name.Contains("MetalShelfB")) value = CustomSettings.settings.mediumMetalShelf;
+                    else value = __instance.m_BreakDown.m_YieldObjectUnits[0];
+                }
+                else if (__instance.m_BreakDownNameLabel.mText.Equals("Broken Metal Bed Frame")) value = CustomSettings.settings.bedFrame;
+                else if (__instance.m_BreakDownNameLabel.mText.Equals("Broken Metal Door")) value = CustomSettings.settings.metalDoor;
+                else if (__instance.m_BreakDownNameLabel.mText.Equals("Metal Pail")) value = CustomSettings.settings.metalBucket;
                 else value = __instance.m_BreakDown.m_YieldObjectUnits[0];
 
                 __instance.m_BreakDown.m_YieldObjectUnits[0] = value;
