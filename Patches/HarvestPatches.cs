@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using Il2Cpp;
 using HarmonyLib;
-using Unity.VisualScripting;
 
 namespace HarvestYieldTweaker.Patches
 {
