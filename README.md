@@ -12,6 +12,11 @@ Using the Mod Settings menu you are able to modify the yield of:
 * Both types of pallets
 * Branches
 * Scrub Brushes
+* Metal Shelves
+* Metal Bucket
+* Metal Bed Frame
+* Broken Metal Door
+* Metal Lamps
 
 More types may be added in the future. 
 
